@@ -14,4 +14,5 @@ func envInit() {
 	os.Setenv("REDIS_DB", "0")
 
 	os.Setenv("TEST_MOD", "1")
+
 }
