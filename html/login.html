@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-dark.min.css">
+</head>
+<body class="bg-dark text-light">
+    <div class="container mt-5">
+        <h1 class="text-center">Вход</h1>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Имя пользователя:</label><br>
+                <input class="form-control" type="text" id="username" name="username" required><br>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label><br>
+                <input class="form-control" type="password" id="password" name="password" required><br><br>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+        </form>
+    </div>
+</body>
+</html>

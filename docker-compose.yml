@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: qwerty
+    ports:
+      - '5432:5432'
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+  forum:
+    build:
+      dockerfile: ./forum.Dockerfile
+    ports:
+      - "1234:1234"
+    volumes:
+      - .\:/app/
+    depends_on:
+     - postgres
+     - redis
