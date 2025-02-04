@@ -256,14 +256,14 @@ func (dp DaoPostgres) CreateComment(author sm.User, postID string, parentID *str
 		err = dp.db.QueryRow(queryStr, content, author.ID, postID).Scan(&comment.ID, &comment.Content, &comment.ParentId, &comment.PostID)
 	} else {
 		queryStr = `INSERT INTO comments (content, author_id, post_id, parent_id) 
-					SELECT ($1, $2, $3, $4)
+					SELECT $1, $2, $3, $4
 					WHERE EXISTS (
 						SELECT 1 FROM posts 
 						WHERE id = $3 AND allow_comments = true
 					)
 					RETURNING id, content, parent_id, post_id;`
 		comment.ParentId = new(string)
-		err = dp.db.QueryRow(queryStr, content, author.ID, postID, parentID).Scan(&comment.ID, &comment.Content, comment.ParentId, &comment.PostID)
+		err = dp.db.QueryRow(queryStr, content, author.ID, postID, *parentID).Scan(&comment.ID, &comment.Content, &comment.ParentId, &comment.PostID)
 	}
 
 	if err != nil {

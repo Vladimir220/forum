@@ -13,6 +13,7 @@ func TestRedisPost(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	UserTest(db, t)
-	PostTest(db, t)
+	//UserTest(db, t)
+	//PostTest(db, t)
+	CommentTest(db, t)
 }

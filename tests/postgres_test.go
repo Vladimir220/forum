@@ -3,7 +3,6 @@ package tests
 import (
 	"forum/db/DAO"
 	"testing"
-	"time"
 )
 
 func TestPostgresPost(t *testing.T) {
@@ -14,7 +13,7 @@ func TestPostgresPost(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	time.Sleep(time.Second * 2)
 	UserTest(db, t)
 	PostTest(db, t)
+	CommentTest(db, t)
 }
