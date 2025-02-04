@@ -133,6 +133,9 @@ func CommentTest(dao DAO.Dao, t *testing.T) {
 	comCtxs := []system_models.CommentCtx{comCtx}
 
 	commentsForEveryCtx, err := dao.ReadNearCommentsByCtx(comCtxs, 1, 0)
+	if err != nil {
+		t.Fatalf("Ошибка работы dao.ReadNearCommentsByCtx: %v", err)
+	}
 	arrRes, ok := commentsForEveryCtx[comCtx]
 	if !ok || len(arrRes) == 0 {
 		t.Fatal("Ошибка работы dao.ReadNearCommentsByCtx")
