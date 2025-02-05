@@ -30,6 +30,8 @@ CREATE TABLE comments (
 );
 
 CREATE INDEX idx_comment_id ON comments(id);
+CREATE INDEX idx_comment_post_id ON comments(post_id);
+CREATE INDEX idx_comment_parent_id ON comments(parent_id);
 
 CREATE OR REPLACE FUNCTION notify_new_comment() RETURNS TRIGGER AS $$
 BEGIN
