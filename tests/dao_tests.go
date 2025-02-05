@@ -51,7 +51,6 @@ func PostTest(dao DAO.Dao, t *testing.T) {
 		t.Fatal("Ошибка работы dao.ReadAllPosts")
 	}
 
-	//dao.UpdateCommentingAccess()
 }
 
 func UserTest(dao DAO.Dao, t *testing.T) {

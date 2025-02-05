@@ -12,8 +12,9 @@ func TestRedisPost(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer db.Close()
 
-	//UserTest(db, t)
-	//PostTest(db, t)
+	UserTest(db, t)
+	PostTest(db, t)
 	CommentTest(db, t)
 }

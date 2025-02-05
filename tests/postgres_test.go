@@ -12,6 +12,7 @@ func TestPostgresPost(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer db.Close()
 
 	UserTest(db, t)
 	PostTest(db, t)
