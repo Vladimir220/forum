@@ -5,19 +5,19 @@ import (
 	"net/http"
 )
 
-func readBodyReq(w http.ResponseWriter, r *http.Request) (user user, err error) {
+func (h Handlers) readBodyReq(r *http.Request) (user user, err error) {
 	contentType := r.Header.Get("Content-Type")
 	switch contentType {
 	case "application/json":
 		err = json.NewDecoder(r.Body).Decode(&user)
 		if err != nil {
-			http.Error(w, "Failed to decode JSON", http.StatusBadRequest)
+			h.errorsLog.Printf("Ошибка кодирования в JSON: %v\n", err)
 			return
 		}
 	case "application/x-www-form-urlencoded":
 		err = r.ParseForm()
 		if err != nil {
-			http.Error(w, "Failed to parse form", http.StatusBadRequest)
+			h.errorsLog.Printf("Ошибка парсинга формы: %v\n", err)
 			return
 		}
 		user.Username = r.FormValue("username")

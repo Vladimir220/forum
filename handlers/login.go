@@ -13,7 +13,7 @@ func (h Handlers) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	user, err := readBodyReq(w, r)
+	user, err := h.readBodyReq(r)
 
 	if err != nil {
 		http.Error(w, "Ожидаются поля username и password", http.StatusBadRequest)
