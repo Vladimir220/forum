@@ -4,7 +4,6 @@ CREATE TABLE users (
     hashed_password TEXT NOT NULL
 );
 
-CREATE INDEX idx_user_id ON users(id);
 CREATE INDEX idx_user_name ON users(user_name);
 
 CREATE TABLE posts (
@@ -16,7 +15,6 @@ CREATE TABLE posts (
     FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_post_id ON posts(id);
 
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
@@ -29,7 +27,6 @@ CREATE TABLE comments (
     FOREIGN KEY (parent_id) REFERENCES comments(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_comment_id ON comments(id);
 CREATE INDEX idx_comment_post_id ON comments(post_id);
 CREATE INDEX idx_comment_parent_id ON comments(parent_id);
 
