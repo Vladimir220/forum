@@ -29,11 +29,11 @@ func main() {
 	} else {
 		dao, err = DAO.CreateDaoPostgres()
 	}
-	defer dao.Close()
 
 	if err != nil {
 		dbErrorsLog.Fatal(err)
 	}
+	defer dao.Close()
 
 	router := inits.InitRouter(dao, errorsLog, dbErrorsLog)
 
