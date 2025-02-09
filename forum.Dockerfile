@@ -8,4 +8,4 @@ RUN ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 EXPOSE 1234
 
-CMD go run .
+CMD go mod tidy; go run .
